@@ -16,27 +16,30 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `productreview`
+-- Table structure for table `orderdetail`
 --
 
-DROP TABLE IF EXISTS `productreview`;
+DROP TABLE IF EXISTS `orderdetail`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `productreview` (
-  `id` int NOT NULL,
-  `productid` int NOT NULL,
-  `binhluan` mediumtext COLLATE utf8_unicode_ci,
-  PRIMARY KEY (`id`,`productid`)
+CREATE TABLE `orderdetail` (
+  `orderid` int DEFAULT NULL,
+  `productid` int DEFAULT NULL,
+  `userid` int DEFAULT NULL,
+  `quantity` int DEFAULT NULL,
+  `deliverdate` date DEFAULT NULL,
+  KEY `orderid` (`orderid`),
+  CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`orderid`) REFERENCES `productorder` (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `productreview`
+-- Dumping data for table `orderdetail`
 --
 
-LOCK TABLES `productreview` WRITE;
-/*!40000 ALTER TABLE `productreview` DISABLE KEYS */;
-/*!40000 ALTER TABLE `productreview` ENABLE KEYS */;
+LOCK TABLES `orderdetail` WRITE;
+/*!40000 ALTER TABLE `orderdetail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `orderdetail` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-04  9:44:39
+-- Dump completed on 2021-08-04  9:44:38

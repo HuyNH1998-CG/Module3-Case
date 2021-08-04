@@ -27,12 +27,12 @@ CREATE TABLE `product` (
   `tenhang` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `giatien` float DEFAULT NULL,
   `hinhanh` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `mota` mediumtext,
+  `mota` mediumtext COLLATE utf8_unicode_ci,
   `loai` int DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `loai` (`loai`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`loai`) REFERENCES `category` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -53,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-04  9:12:28
+-- Dump completed on 2021-08-04  9:44:38

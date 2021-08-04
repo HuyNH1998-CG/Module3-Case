@@ -24,15 +24,7 @@ DROP TABLE IF EXISTS `productorder`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productorder` (
   `orderid` int NOT NULL AUTO_INCREMENT,
-  `productid` int DEFAULT NULL,
-  `userid` int DEFAULT NULL,
-  `quantity` int DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  PRIMARY KEY (`orderid`),
-  KEY `a_idx` (`productid`),
-  KEY `b_idx` (`userid`),
-  CONSTRAINT `a` FOREIGN KEY (`productid`) REFERENCES `product` (`id`),
-  CONSTRAINT `b` FOREIGN KEY (`userid`) REFERENCES `users` (`id`)
+  PRIMARY KEY (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -54,4 +46,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-04  9:12:27
+-- Dump completed on 2021-08-04  9:44:39
