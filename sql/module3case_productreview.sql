@@ -23,11 +23,12 @@ DROP TABLE IF EXISTS `productreview`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `productreview` (
-  `id` int NOT NULL auto_increment,
+  `id` int NOT NULL,
   `productid` int NOT NULL,
   `binhluan` mediumtext COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`,`productid`),
-  FOREIGN KEY (`productid`) references `product`(`id`)
+  KEY `productid` (`productid`),
+  CONSTRAINT `productreview_ibfk_1` FOREIGN KEY (`productid`) REFERENCES `product` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-04  9:44:39
+-- Dump completed on 2021-08-04 10:12:06

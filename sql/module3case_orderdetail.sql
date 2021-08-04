@@ -25,9 +25,7 @@ DROP TABLE IF EXISTS `orderdetail`;
 CREATE TABLE `orderdetail` (
   `orderid` int DEFAULT NULL,
   `productid` int DEFAULT NULL,
-  `userid` int DEFAULT NULL,
   `quantity` int DEFAULT NULL,
-  `deliverdate` date DEFAULT NULL,
   KEY `orderid` (`orderid`),
   CONSTRAINT `orderdetail_ibfk_1` FOREIGN KEY (`orderid`) REFERENCES `productorder` (`orderid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
@@ -51,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-04  9:44:38
+-- Dump completed on 2021-08-04 10:12:07
