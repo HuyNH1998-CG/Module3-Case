@@ -9,4 +9,12 @@ public class GioHang extends SanPham{
     public GioHang(int id, String ten, float gia, String mota, String hinhanh, String phanloai) {
         super(id, ten, gia, mota, hinhanh, phanloai);
     }
+
+    public int getSoluong() {
+        return soluong;
+    }
+
+    public void setSoluong(int soluong) {
+        this.soluong = soluong;
+    }
 }
