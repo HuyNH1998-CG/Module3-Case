@@ -29,6 +29,8 @@ CREATE TABLE `product` (
   `hinhanh` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `mota` mediumtext COLLATE utf8_unicode_ci,
   `loai` int DEFAULT NULL,
+  `trongkho` int DEFAULT NULL,
+  `tinhtrang` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `loai` (`loai`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`loai`) REFERENCES `category` (`id`)
@@ -53,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-08-04 10:12:07
+-- Dump completed on 2021-08-04 10:31:56
