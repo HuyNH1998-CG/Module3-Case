@@ -33,6 +33,8 @@ CREATE TABLE `product` (
   `tinhtrang` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `loai` (`loai`),
+  `trongkho` int DEFAULT NULL,
+  `tinhtrang` varchar(45) COLLATE utf8_unicode_ci DEFAULT NULL,
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`loai`) REFERENCES `category` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
