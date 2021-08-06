@@ -1,19 +1,19 @@
 Model/PhanLoai.java
  Model.PhanLoai
-Servlet/Register.java
- Servlet.Register
+down/LoginConnectionCSDL.java
+ down.LoginConnectionCSDL
 Servlet/LoginServ.java
  Servlet.LoginServ
-Dao/ManageMySQL.java
- Dao.ManageMySQL
+controllers/LoginServletCheck.java
+ controllers.LoginServletCheck
 Connection/Connect.java
  Connection.Connect
 Model/SanPham.java
  Model.SanPham
-models/Account.java
- models.Account
-controllers/LoginServlet.java
- controllers.LoginServlet
+down/CRUDAccount.java
+ down.CRUDAccount
+Dao/ManageMySQL.java
+ Dao.ManageMySQL
 Servlet/UserServ.java
  Servlet.UserServ
 Servlet/ProductServ.java
@@ -28,23 +28,23 @@ Dao/OrderDAO.java
  Dao.OrderDAO
 Model/KhachHang.java
  Model.KhachHang
-Dao/ConnectionMySQL.java
- Dao.ConnectionMySQL
+Service/SanPhamService.java
+ Service.SanPhamService
 Dao/UserDAO.java
  Dao.UserDAO
 Model/DonHang.java
  Model.DonHang
-services/LoginService.java
- services.LoginService
-controllers/LoginServletCheck.java
- controllers.LoginServletCheck
-down/LoginConnectionCSDL.java
- down.LoginConnectionCSDL
-down/CRUDAccount.java
- down.CRUDAccount
-Service/SanPhamService.java
- Service.SanPhamService
+Dao/ConnectionMySQL.java
+ Dao.ConnectionMySQL
 Controler/ManageSanPham.java
  Controler.ManageSanPham
+controllers/LoginServlet.java
+ controllers.LoginServlet
+Servlet/Register.java
+ Servlet.Register
 Servlet/Order.java
  Servlet.Order
+services/LoginService.java
+ services.LoginService
+models/Account.java
+ models.Account

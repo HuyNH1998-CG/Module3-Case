@@ -304,7 +304,7 @@
                         <div class="col-md-4 col-xs-6" >
                             <div class="product">
                                 <div class="product-img">
-                                    <img src="${SP.hinhanh}" alt="anh">
+                                    <img src="${SP.hinhanh}" alt="" style="height: 300px">
                                 </div>
                                 <div class="product-body">
                                     <p class="product-category">${SP.phanloai}</p>
