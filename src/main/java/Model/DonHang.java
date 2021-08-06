@@ -1,24 +1,25 @@
 package Model;
 
+import java.sql.Date;
+
 public class DonHang extends SanPham{
     private int orderID;
     private int userid;
-    private int productid;
+    private Date date;
     private float total;
 
     public DonHang() {
     }
 
-    public DonHang(int orderID, int userid, int productid, float total) {
-        this.orderID = orderID;
+    public DonHang(int userid, Date date) {
         this.userid = userid;
-        this.productid = productid;
-        this.total = total;
+        this.date = date;
     }
 
-    public DonHang(int userid, int productid, float total) {
+    public DonHang(int orderID, int userid, Date date, float total) {
+        this.orderID = orderID;
         this.userid = userid;
-        this.productid = productid;
+        this.date = date;
         this.total = total;
     }
 
@@ -38,12 +39,12 @@ public class DonHang extends SanPham{
         this.userid = userid;
     }
 
-    public int getProductid() {
-        return productid;
+    public Date getDate() {
+        return date;
     }
 
-    public void setProductid(int productid) {
-        this.productid = productid;
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public float getTotal() {
