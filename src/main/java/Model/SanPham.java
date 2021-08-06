@@ -7,13 +7,13 @@ public class SanPham {
     private String mota;
     private String hinhanh;
     private String phanloai;
-    private String trongKho;
+    private int trongKho;
     private String status;
 
     public SanPham() {
     }
 
-    public SanPham(int id, String ten, float gia, String mota, String hinhanh, String phanloai, String trongKho, String status) {
+    public SanPham(int id, String ten, float gia, String mota, String hinhanh, String phanloai, int trongKho, String status) {
         this.id = id;
         this.ten = ten;
         this.gia = gia;
@@ -22,6 +22,15 @@ public class SanPham {
         this.phanloai = phanloai;
         this.trongKho = trongKho;
         this.status = status;
+    }
+
+    public SanPham(int id, String ten, float gia, String mota, String hinhanh, String phanloai) {
+        this.id = id;
+        this.ten = ten;
+        this.gia = gia;
+        this.mota = mota;
+        this.hinhanh = hinhanh;
+        this.phanloai = phanloai;
     }
 
     public int getId() {
@@ -72,11 +81,11 @@ public class SanPham {
         this.phanloai = phanloai;
     }
 
-    public String getTrongKho() {
+    public int getTrongKho() {
         return trongKho;
     }
 
-    public void setTrongKho(String trongKho) {
+    public void setTrongKho(int trongKho) {
         this.trongKho = trongKho;
     }
 

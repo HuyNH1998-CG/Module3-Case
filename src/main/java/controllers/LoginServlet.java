@@ -70,25 +70,14 @@ public class LoginServlet extends HttpServlet {
         switch (action){
             case "create":
                 loginService.save(account);
-//                PrintWriter writer= resp.getWriter();
-//                writer.println("<h1>Bạn đã đăng ký thành công</>");
-//                for( int i=0;i<1;i++){
-//                    try {
-//                        Thread.sleep(1500);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-                //Đến đây thì đã đăng ký thành công nhưng chưa biết làm thế nào để ra thông báo.
-                //cần setup chuyển hướng đến trang nào đấy- ví dụ chuyển về trang đăng nhập
+
                 resp.sendRedirect("/views/loginpage.jsp");
                 break;
             case "edit":
                 loginService.edit(account);
                 resp.sendRedirect("/account");
                 break;
-//            case "delete":
-//                break;
+
             default:
                 break;
         }

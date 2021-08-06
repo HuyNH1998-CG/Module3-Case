@@ -18,7 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
+<li><a href="/login?action=logout">Log out</a><li>
 <div class="container">
     <h2>Quản Lí Sản Phẩm Admin</h2>
     <a href="/?action=create" class="btn btn-danger">Thêm mới</a>
@@ -31,7 +31,7 @@
             <th>Mô Tả</th>
             <th>Hình Ảnh</th>
             <th>Phân Loại</th>
-            <th>Nhà Phân Phối</th>
+            <th>Số lượng trong kho</th>
             <th>Tình Trạng</th>
             <th>Xóa</th>
             <th>Edit</th>

@@ -3,6 +3,7 @@ package Service;
 import Dao.ManageMySQL;
 import Model.SanPham;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Collection;
@@ -20,8 +21,12 @@ public class SanPhamService {
     }
 
 
-    public  void saveSp(SanPham sanPham){
-        list.add(sanPham);
+    public  void saveSp(String name, float price, String moTa, String hinhAnh, int phanloai, int trongKho){
+        try {
+            ManageMySQL.addSP(name, price, moTa, hinhAnh, phanloai, trongKho);
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
     }
     public void editSp(SanPham sanPham,int index){
         list.set(index,sanPham);

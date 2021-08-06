@@ -1,39 +1,27 @@
 package Model;
 
 public class PhanLoai {
-    private int idLoai;
-    private String tenLoai;
+    private int id;
+    private String name;
 
-    public PhanLoai() {
+    public PhanLoai(int id, String name) {
+        this.id = id;
+        this.name = name;
     }
 
-    public PhanLoai(int idLoai, String tenLoai) {
-        this.idLoai = idLoai;
-        this.tenLoai = tenLoai;
+    public int getId() {
+        return id;
     }
 
-    public int getIdLoai() {
-        return idLoai;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setIdLoai(int idLoai) {
-        this.idLoai = idLoai;
+    public String getName() {
+        return name;
     }
 
-    public String getTenLoai() {
-        return tenLoai;
-    }
-
-    public void setTenLoai(String tenLoai) {
-        this.tenLoai = tenLoai;
-    }
-
-    @Override
-    public String toString() {
-        return "PhanLoai{" +
-                "idLoai=" + idLoai +
-                ", tenLoai='" + tenLoai + '\'' +
-                '}';
+    public void setName(String name) {
+        this.name = name;
     }
 }
-

@@ -29,17 +29,16 @@ public class CRUDAccount {
     }
 
     public static void saveAccount(Account account) throws SQLException {
-        String sqlSave= "insert into users value (?,?,?,?,?,?,?,?,?)";
+        String sqlSave= "insert into users (username, password, ten, ngaysinh, sodienthoai, email, diachi) value (?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement= connection.prepareStatement(sqlSave);
-        preparedStatement.setInt(1,account.getId());
-        preparedStatement.setString(2,account.getUserName());
-        preparedStatement.setString(3,account.getPassWord());
-        preparedStatement.setString(4,account.getTen());
-        preparedStatement.setString(5,account.getNgaySinh());
-        preparedStatement.setString(6,account.getSoDT());
-        preparedStatement.setString(7,account.getEmail());
-        preparedStatement.setString(8,account.getDiaChi());
-        preparedStatement.setString(9,account.getRole());
+        preparedStatement.setString(1,account.getUserName());
+        preparedStatement.setString(2,account.getPassWord());
+        preparedStatement.setString(3,account.getTen());
+        preparedStatement.setString(4,account.getNgaySinh());
+        preparedStatement.setString(5,account.getSoDT());
+        preparedStatement.setString(6,account.getEmail());
+        preparedStatement.setString(7,account.getDiaChi());
+        preparedStatement.setString(8,account.getRole());
         preparedStatement.execute();
     }
 

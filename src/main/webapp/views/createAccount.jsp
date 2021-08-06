@@ -37,7 +37,6 @@
             </thead>
             <tbody>
             <tr>
-                <td><input type="text" name="id" placeholder="Nhap ID"></td>
                 <td><input type="text" name="username" placeholder="Nhap UserName"></td>
                 <td><input type="text" name="password" placeholder="Nhap PassWord"></td>
                 <td><input type="text" name="ten" placeholder="Nhap Ten"></td>
@@ -45,7 +44,6 @@
                 <td><input type="text" name="sdt" placeholder="Nhap SDT"></td>
                 <td><input type="email" name="email" placeholder="Nhap Email"></td>
                 <td><input type="text" name="diachi" placeholder="Nhap DiaChi"></td>
-<%--                <td><input type="text" name="role" placeholder="Nhap role"></td>--%>
                 <td>
                     <select type="text" name="role">
                             <option value="admin">Admin</option>

@@ -22,42 +22,42 @@
 <div class="container">
     <h2>Quản Lí Sản Phẩm Admin</h2>
     <h3>Tạo Sản Phẩm Admin</h3>
-    <table class="table table-bordered">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Tên Sản Phẩm</th>
-            <th>Giá</th>
-            <th>Mô Tả</th>
-        </tr>
-        <tr>
-            <th>Hình Ảnh</th>
-            <th>Phân Loại</th>
-            <th>Nhà Phân Phối</th>
-            <th>Tình Trạng</th>
-        </tr>
-        </thead>
-        <tbody>
-        <form action="/?action=create" method="post">
+    <form action="/?action=create" method="post">
+        <table class="table table-bordered">
             <tr>
-                <td><input placeholder="Nhập Id" name="id"></td>
-                <td><input placeholder="Nhập Tên" name="id"></td>
-                <td><input placeholder="Nhập Giá" name="id"></td>
-                <td><input placeholder="Nhập Mô Tả" name="id"></td>
+                <th>Tên Sản Phẩm</th>
+                <td><input placeholder="Nhập Tên" name="name"></td>
+            <tr>
+            <tr>
+                <th>Giá</th>
+                <td><input placeholder="Nhập Giá" name="price"></td>
             </tr>
             <tr>
-                <td><input placeholder="Nhập Hình Ảnh" name="id"></td>
-                <td><input placeholder="Nhập Phân Loại" name="id"></td>
-                <td><input placeholder="Nhập Nhà Cung Cấp" name="id"></td>
-                <td><input placeholder="Nhập Status" name="id"></td>
-                <th>
-                    <button type="submit" class="btn btn-danger">Create</button>
-                </th>
+                <th>Mô Tả</th>
+                <td><input placeholder="Nhập Mô Tả" name="desc"></td>
             </tr>
-        </form>
-        </tbody>
-    </table>
+            <tr>
+                <th>Hình Ảnh</th>
+                <td><input placeholder="Nhập Hình Ảnh" name="image"></td>
+            </tr>
+            <tr>
+                <th>Phân Loại</th>
+                <td><select name="category" >
+                        <option value="1">Đồ gia dụng</option>
+                        <option value="2">Đồ điện tử</option>
+                        <option value="3">Sách</option>
+                        <option value="4">Khác</option>
+                    </select>
+            </tr>
+            <tr>
+                <th>Số lượng</th>
+                <td><input placeholder="Nhập số lượng" name="amount"></td>
+            </tr>
+            <tr>
+                <button type="submit" class="btn btn-danger">Create</button>
+            </tr>
+        </table>
+    </form>
 </div>
-
 </body>
 </html>
