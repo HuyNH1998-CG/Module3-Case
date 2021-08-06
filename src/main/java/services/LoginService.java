@@ -6,7 +6,7 @@ import models.Account;
 import java.util.ArrayList;
 
 public class LoginService {
-    public ArrayList<Account>listAcc=new ArrayList<>();
+    public static ArrayList<Account>listAcc=new ArrayList<>();
     public LoginService(){
         try{
             listAcc= CRUDAccount.showAccount();

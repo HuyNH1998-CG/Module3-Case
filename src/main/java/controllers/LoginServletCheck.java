@@ -15,11 +15,12 @@ import java.util.ArrayList;
 @WebServlet(urlPatterns = {"/accountcheck"})
 public class LoginServletCheck extends HttpServlet {
     LoginService loginService = new LoginService();
-    private ArrayList<Account> listAcc = loginService.listAcc;
+    ArrayList<Account> listAcc;
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        resp.sendRedirect("/account");
+        listAcc = loginService.listAcc;
         String userName=req.getParameter("username");
         String passWord=req.getParameter("password");
         boolean check=false;
@@ -59,5 +60,9 @@ public class LoginServletCheck extends HttpServlet {
                 return;
         }
 
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
     }
 }
