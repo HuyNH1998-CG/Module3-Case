@@ -48,7 +48,7 @@
 <%--                <td><input type="text" name="role" placeholder="Nhap role"></td>--%>
                 <td>
                     <select type="text" name="role">
-                            <option value="admin">Admin</option>
+<%--                            <option value="admin">Admin</option>--%>
                             <option value="khachhang">KhachHang</option>
                     </select>
                 </td>

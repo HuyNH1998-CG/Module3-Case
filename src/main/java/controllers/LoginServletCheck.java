@@ -23,19 +23,33 @@ public class LoginServletCheck extends HttpServlet {
         String userName=req.getParameter("username");
         String passWord=req.getParameter("password");
         boolean check=false;
+        boolean check2=false;
+//        Account acc;
+//        for(Account account: listAcc) {
+//            if(userName.equals(account.getUserName())&& passWord.equals(account.getPassWord())){
+//                acc=account;
+//                break;
+//            }
+//        }
+
 
         for(Account account: listAcc) {
-            if(userName.equals(account.getUserName())&& passWord.equals(account.getPassWord())){
+            if(userName.equals(account.getUserName())&& passWord.equals(account.getPassWord())&&account.getRole().equals("admin")){
                 check=true;
+                break;
+            }else if(userName.equals(account.getUserName())&& passWord.equals(account.getPassWord())&&account.getRole().equals("khachhang")){
+                check2=true;
                 break;
             }
         }
 
-        if(check==true){
-                //Hỏi lại các câu lệnh resp.sendRedirect,requestDispatcher.forward(req,resp)
-                // đều vào doGet ?
-                resp.sendRedirect("/account");
-                return;
+        if(check==true) {
+            //Hỏi lại các câu lệnh resp.sendRedirect,requestDispatcher.forward(req,resp)
+            // đều vào doGet ?
+            resp.sendRedirect("/account");
+            return;
+        }else if(check2==true){
+            resp.sendRedirect("/views/homepage.jsp");
         }else {
                 //PrintWriter writer= resp.getWriter();
                 //writer.println("Đăng Nhập Fail");

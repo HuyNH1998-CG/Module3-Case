@@ -52,6 +52,6 @@
         </tr>
     </c:forEach>
 </table>
-<a href="/homepage" class="cancelbtn" style="border: #04AA6D" >Home Page</a>
+<a href="/views/homepage.jsp" class="cancelbtn" style="border: #04AA6D" >Home Page</a>
 </body>
 </html>
