@@ -18,9 +18,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<div class="container">
+<a href="/" class="btn btn-danger">Home</a>
     <h2>Quản Lí Sản Phẩm Admin</h2>
+
+<form action="/?action=FindByLoai"method="get">
+    <input type="text" placeholder="Search By Category" name="findLoai">
+    <input type="text" hidden name="action"value="FindByLoai">
+    <button type="submit" class="btn btn-danger">Tìm Kiếm</button>
+</form>
+
+<br>
     <a href="/?action=create" class="btn btn-danger">Thêm mới</a>
     <table class="table table-bordered">
         <thead>
@@ -46,12 +53,12 @@
                     <td>${sanpham.ten}</td>
                     <td>${sanpham.gia}</td>
                     <td>${sanpham.mota}</td>
-                    <td>${sanpham.hinhanh}</td>
+                    <td><img style="width: 100px;height: 150px" src="${sanpham.hinhanh}" alt=""></td>
                     <td>${sanpham.phanloai}</td>
                     <td>${sanpham.trongKho}</td>
                     <td>${sanpham.status}</td>
-                    <td> <a href="/?action=create" class="btn btn-danger">Thêm mới</a></td>
-                    <td> <a href="/?action=edit" class="btn btn-danger">Thêm mới</a></td>
+                    <td> <a href="/?action=delete&index=${loop.index}" class="btn btn-danger">Xóa</a></td>
+                    <td> <a href="/?action=edit&index=${loop.index}" class="btn btn-danger">Edit</a></td>
                 </tr>
             </c:forEach>
         </form>

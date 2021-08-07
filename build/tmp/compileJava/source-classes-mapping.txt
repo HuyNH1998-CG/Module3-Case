@@ -10,7 +10,7 @@ Model/SanPham.java
  Model.SanPham
 Service/SanPhamService.java
  Service.SanPhamService
-Dao/ManageMySQL.java
- Dao.ManageMySQL
 Controler/ManageSanPham.java
  Controler.ManageSanPham
+Dao/ManageMySQL.java
+ Dao.ManageMySQL

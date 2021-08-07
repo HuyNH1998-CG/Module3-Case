@@ -41,15 +41,15 @@
         <form action="/?action=create" method="post">
             <tr>
                 <td><input placeholder="Nhập Id" name="id"></td>
-                <td><input placeholder="Nhập Tên" name="id"></td>
-                <td><input placeholder="Nhập Giá" name="id"></td>
-                <td><input placeholder="Nhập Mô Tả" name="id"></td>
+                <td><input placeholder="Nhập Tên" name="ten"></td>
+                <td><input placeholder="Nhập Giá" name="gia"></td>
+                <td><input placeholder="Nhập Mô Tả" name="mota"></td>
             </tr>
             <tr>
-                <td><input placeholder="Nhập Hình Ảnh" name="id"></td>
-                <td><input placeholder="Nhập Phân Loại" name="id"></td>
-                <td><input placeholder="Nhập Nhà Cung Cấp" name="id"></td>
-                <td><input placeholder="Nhập Status" name="id"></td>
+                <td><input placeholder="Nhập Hình Ảnh" name="hinhanh"></td>
+                <td><input placeholder="Nhập Phân Loại" name="phanloai"></td>
+                <td><input placeholder="Nhập Nhà Cung Cấp" name="trongKho"></td>
+                <td><input placeholder="Nhập Status" name="status"></td>
                 <th>
                     <button type="submit" class="btn btn-danger">Create</button>
                 </th>

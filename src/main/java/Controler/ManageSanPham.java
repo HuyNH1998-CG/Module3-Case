@@ -13,27 +13,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet(urlPatterns = {""})
 public class ManageSanPham extends HttpServlet {
-    ManageMySQL manageMySQL=new ManageMySQL();
-    SanPhamService sanPhamService=new SanPhamService();
-
-
-
-    @Override
-    public void init(){
-
-    }
+    ManageMySQL manageMySQL = new ManageMySQL();
+    SanPhamService sanPhamService = new SanPhamService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String actionSp = req.getParameter("action");
         RequestDispatcher requestDispatcher;
-
-
         if (actionSp == null) {
             actionSp = "";
         }
@@ -42,14 +34,31 @@ public class ManageSanPham extends HttpServlet {
                 resp.sendRedirect("/Views/CreateSanPham.jsp");
                 break;
             case "delete":
-            case "edit":
-            case "FindByLoai":
-            default:ArrayList<SanPham> list=new ArrayList<>();
+                int indexDelete = Integer.parseInt(req.getParameter("index"));
                 try {
-                    list= (ArrayList<SanPham>) manageMySQL.Select();
+                    sanPhamService.deleteSp(indexDelete);
                 } catch (Exception e) {
                     e.printStackTrace();
-                } req.setAttribute("listSp", list);
+                }
+                resp.sendRedirect("/");
+                break;
+            case "edit":
+                int indexEdit=Integer.parseInt(req.getParameter("index"));
+                req.setAttribute("IndexEdit",sanPhamService.list.get(indexEdit));
+                requestDispatcher=req.getRequestDispatcher("Views/EditSp.jsp");
+                requestDispatcher.forward(req, resp);
+            case "FindByLoai":
+                String loai = req.getParameter("findLoai");
+                try {
+                    req.setAttribute("listSp", SanPhamService.FindByLoai(loai));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+                requestDispatcher = req.getRequestDispatcher("Views/HomeAdmin.jsp");
+                requestDispatcher.forward(req, resp);
+                break;
+            default:
+                req.setAttribute("listSp", SanPhamService.list);
                 requestDispatcher = req.getRequestDispatcher("Views/HomeAdmin.jsp");
                 requestDispatcher.forward(req, resp);
         }
@@ -59,8 +68,6 @@ public class ManageSanPham extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        List<SanPham> list = null;
-
 
         String actionSp = req.getParameter("action");
         RequestDispatcher requestDispatcher;
@@ -69,21 +76,46 @@ public class ManageSanPham extends HttpServlet {
         }
         switch (actionSp) {
             case "create":
-                int id=Integer.parseInt(req.getParameter("id"));
-                String ten=req.getParameter("ten");
-                float gia=Float.parseFloat("gia");
-                String moTa=req.getParameter("mota");
-                String hinhAnh=req.getParameter("hinhanh");
-                String phanloai=req.getParameter("phanloai");
-                String trongKho=req.getParameter("trongKho");
-                String status=req.getParameter("status");
-                SanPham sanPham=new SanPham(id,ten,gia,moTa,hinhAnh,phanloai,trongKho,status);
+                int id = Integer.parseInt(req.getParameter("id"));
+                String ten = req.getParameter("ten");
+                float gia = Float.parseFloat(req.getParameter("gia"));
+                String moTa = req.getParameter("mota");
+                String hinhAnh = req.getParameter("hinhanh");
+                String phanloai = req.getParameter("phanloai");
+                String trongKho = req.getParameter("trongKho");
+                String status = req.getParameter("status");
+                SanPham sanPham = new SanPham(id, ten, gia, moTa, hinhAnh, phanloai, trongKho, status);
 
-                sanPhamService.saveSp(sanPham);
+                try {
+                    sanPhamService.saveSp(sanPham);
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 resp.sendRedirect("/");
                 break;
 
             case "edit":
+                int idEdit = Integer.parseInt(req.getParameter("id"));
+                String tenEdit = req.getParameter("ten");
+                float giaEdit = Float.parseFloat(req.getParameter("gia"));
+                String moTaEdit = req.getParameter("mota");
+                String hinhAnhEdit = req.getParameter("hinhanh");
+                String phanloaiEdit = req.getParameter("phanloai");
+                String trongKhoEdit = req.getParameter("trongKho");
+                String statusEdit = req.getParameter("status");
+                SanPham sanPhamEdit = new SanPham(idEdit, tenEdit, giaEdit, moTaEdit, hinhAnhEdit, phanloaiEdit, trongKhoEdit, statusEdit);
+
+                try {
+                    sanPhamService.editSp(idEdit,sanPhamEdit);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+                resp.sendRedirect("/");
+                break;
+
             default:
 //                req.setAttribute("ListPl", PhanLoaiService.listpl);
                 req.setAttribute("ListSp", SanPhamService.list);

@@ -3,6 +3,7 @@ package Service;
 import Dao.ManageMySQL;
 import Model.SanPham;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Collection;
@@ -20,23 +21,33 @@ public class SanPhamService {
     }
 
 
-    public  void saveSp(SanPham sanPham){
+    public  void saveSp(SanPham sanPham) throws Exception {
+        ManageMySQL.create(sanPham);
         list.add(sanPham);
+
+
     }
-    public void editSp(SanPham sanPham,int index){
-        list.set(index,sanPham);
+    public void editSp(int index,SanPham sanPham){
+        try {
+            ManageMySQL.edit(index,sanPham);
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
     }
-    public void deleteSp(int index){
-        list.remove(index);
+    public void deleteSp(int index)  throws Exception{
+        try {
+            ManageMySQL.delete(list.get(index).getId());
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        list= (ArrayList<SanPham>) ManageMySQL.Select();
+
     }
 
-    public SanPham FindByLoai(int loai){
-        for (int i = 0; i < list.size(); i++) {
-            if(list.get(i).getPhanloai().equals(loai)){
-                return list.get(i);
-            }
-        }
-        return null;
+    public static ArrayList<SanPham> FindByLoai(String loai)throws Exception{
+        return ManageMySQL.findByLoai(loai);
+
     }
 
     public SanPham FindSpNew(int id){
