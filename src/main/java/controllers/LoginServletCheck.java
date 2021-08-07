@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -20,7 +21,9 @@ public class LoginServletCheck extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        resp.sendRedirect("/account");
-        listAcc = loginService.listAcc;
+        //tại sao Toàn sửa lissAcc=loginService.listAcc cho vào đây thì ko lỗi nữa, create acc ko
+        //phải reset lại serve tomcat
+        listAcc= loginService.listAcc;
         String userName=req.getParameter("username");
         String passWord=req.getParameter("password");
         boolean check=false;
@@ -37,8 +40,28 @@ public class LoginServletCheck extends HttpServlet {
         for(Account account: listAcc) {
             if(userName.equals(account.getUserName())&& passWord.equals(account.getPassWord())&&account.getRole().equals("admin")){
                 check=true;
+                HttpSession session= req.getSession();
+                session.setAttribute("id",account.getId());
+                session.setAttribute("username",account.getUserName());
+                session.setAttribute("password",account.getPassWord());
+                session.setAttribute("ten",account.getTen());
+                session.setAttribute("ngaysinh",account.getNgaySinh());
+                session.setAttribute("sdt",account.getSoDT());
+                session.setAttribute("email",account.getEmail());
+                session.setAttribute("diachi",account.getDiaChi());
+                session.setAttribute("role",account.getRole());
                 break;
             }else if(userName.equals(account.getUserName())&& passWord.equals(account.getPassWord())&&account.getRole().equals("khachhang")){
+                HttpSession session= req.getSession();
+                session.setAttribute("id",account.getId());
+                session.setAttribute("username",account.getUserName());
+                session.setAttribute("password",account.getPassWord());
+                session.setAttribute("ten",account.getTen());
+                session.setAttribute("ngaysinh",account.getNgaySinh());
+                session.setAttribute("sdt",account.getSoDT());
+                session.setAttribute("email",account.getEmail());
+                session.setAttribute("diachi",account.getDiaChi());
+                session.setAttribute("role",account.getRole());
                 check2=true;
                 break;
             }

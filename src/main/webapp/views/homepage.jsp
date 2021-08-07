@@ -11,6 +11,8 @@
     <title>Home Page</title>
 </head>
 <body>
-<h1>Welcome To Trang Trủ</h1>
+<h1>Welcome To Trang Trủ</h1><br>
+<a href="/views/infoTKDangDangNhap.jsp">Thông Tin Tài Khoản</a>
+</a>
 </body>
 </html>
