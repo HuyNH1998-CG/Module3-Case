@@ -30,8 +30,12 @@ public class LoginServlet extends HttpServlet {
         }
 
         switch (action) {
-            case "create":
+            case "createmanager":
                 requestDispatcher = req.getRequestDispatcher("/views/createAccount.jsp");
+                requestDispatcher.forward(req, resp);
+                break;
+            case "create":
+                requestDispatcher = req.getRequestDispatcher("/views/dky.jsp");
                 requestDispatcher.forward(req, resp);
                 break;
             case "edit":
@@ -108,7 +112,7 @@ public class LoginServlet extends HttpServlet {
                 } catch (SQLException exception) {
                     exception.printStackTrace();
                 }
-                session.setAttribute("user",user);
+                session.setAttribute("user", user);
                 resp.sendRedirect("/");
                 break;
             case "createmanager":

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Sửa thông tin tài khoản</title>
 </head>
 <body>
 <form action="/account?action=edit" method="post">
