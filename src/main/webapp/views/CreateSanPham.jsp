@@ -46,7 +46,8 @@
                         <option value="1">Đồ gia dụng</option>
                         <option value="2">Đồ điện tử</option>
                         <option value="3">Sách</option>
-                        <option value="4">Khác</option>
+                        <option value="4">Quần áo</option>
+                        <option value="5">Khác</option>
                     </select>
             </tr>
             <tr>

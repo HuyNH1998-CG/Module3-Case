@@ -35,11 +35,11 @@
                     Account user = (Account) request.getSession().getAttribute("user");
                     if (user == null) {
                 %>
-                <li><a href="/views/loginpage.jsp"><i class="fa fa-user-o"></i> My Account</a><li>
+                <li><a href="/views/loginpage.jsp"><i class="fa fa-user-o"></i>Log in</a><li>
                     <%
                 } else {
                 %>
-                <li><a href="/user"><i class="fa fa-user-secret"></i> My Account</a></li>
+                <li><a href="/account?action=view"><i class="fa fa-user-secret"></i>Xem thông tin tài khoản</a></li>
                 <li><a href=""><i class="fa fa-user-o"></i>${user.ten}</a></li>
                 <li><a href="/login?action=logout">Log out</a><li>
                     <%
@@ -69,8 +69,8 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <div class="header-search">
-                        <form>
-                            <select class="input-select">
+                        <form action="/?action=FindByLoai" method="post">
+                            <select class="input-select" name="id">
                                 <option value="0">Tất cả</option>
                                 <option value="1">Đồ Gia Dụng </option>
                                 <option value="2">Đồ Điện Tử</option>
@@ -78,8 +78,8 @@
                                 <option value="4">Quần Áo</option>
                                 <option value="5">Khác</option>
                             </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
+                            <input class="input" placeholder="Search here" name="name">
+                            <button type="submit" class="search-btn">Search</button>
                         </form>
                     </div>
                 </div>
@@ -132,7 +132,12 @@
                 <li><a href="/Show/Sach.jsp">Sách</a></li>
                 <li><a href="/Show/Quanao.jsp">Quần Áo</a></li>
                 <li><a href="/Show/Khac.jsp">Khác</a></li>
+                <% if(user != null){
+                    %>
                 <li><a href="/order?action=view">Xem Đơn Hàng</a></li>
+                <li><a href="/account?action=view">Xem thông tin tài khoản</a></li><%
+                }
+                %>
             </ul>
             <!-- /NAV -->
         </div>

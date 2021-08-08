@@ -47,20 +47,103 @@ public class ManageMySQL {
         preparedStatement.executeUpdate();
     }
 
-//    public static ArrayList<PhanLoai> SelectLoaiSp() throws Exception {
-//        String Select = "SELECT * FROM case_study.category";
-//        ArrayList<PhanLoai> listLoaiSP = new ArrayList<>();
-//
-//        Statement statement =  connection.createStatement();
-//        ResultSet resultSet = statement.executeQuery(Select);
-//
-//        while (resultSet.next()) {
-//            int idLoai= Integer.parseInt(resultSet.getString("Id_loai"));
-//            String tenLoai=resultSet.getString("tenLoai");
-//
-//            listLoaiSP.add(new PhanLoai(idLoai,tenLoai));
-//        }
-//
-//        return  listLoaiSP;
-//    }
+    public static void edit(int id ,String ten, float gia, String mota, String hinhanh, int phanloai, int trongkho)throws SQLException{
+        String edit= "update product set tenHang=?,giaTien=?,mota=?,hinhAnh=?,loai=?,trongKho=? where id=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(edit);
+        preparedStatement.setInt(7,id);
+        preparedStatement.setString(1,ten);
+        preparedStatement.setFloat(2,gia);
+        preparedStatement.setString(3,mota);
+        preparedStatement.setString(4,hinhanh);
+        preparedStatement.setInt(5,phanloai);
+        preparedStatement.setInt(6,trongkho);
+        preparedStatement.executeUpdate();
+    }
+
+    public static void delete(int id)throws SQLException{
+        String delete= "delete from product where id=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(delete);
+        preparedStatement.setInt(1,id);
+        preparedStatement.executeUpdate();
+    }
+    public List<SanPham> getSanPhamByCat(int catID) throws SQLException {
+        List<SanPham> sanPhams = new ArrayList<>();
+        String select = "select product.id,product.tenhang,product.hinhanh,product.giatien,product.mota,product.trongkho,product.tinhtrang,tencategory as loai from product inner join category c on product.loai = c.id where c.id=?";
+        PreparedStatement statement = connection.prepareStatement(select);
+        statement.setInt(1,catID);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            int id = rs.getInt("id");
+            String name = rs.getString("tenhang");
+            String image = rs.getString("hinhanh");
+            float price = rs.getFloat("giatien");
+            String description = rs.getString("mota");
+            int inventory = rs.getInt("trongkho");
+            String status = rs.getString("tinhtrang");
+            String category = rs.getString("loai");
+            sanPhams.add(new SanPham(id,name,price,description,image,category,inventory,status));
+        }
+        return sanPhams;
+    }
+    public List<SanPham> getSanPhamByCatName(int catID,String fName) throws SQLException {
+        List<SanPham> sanPhams = new ArrayList<>();
+        String query = "select product.id,product.tenhang,product.hinhanh,product.giatien,product.mota,product.trongkho,product.tinhtrang,tencategory as loai from product inner join category c on product.loai = c.id where c.id=? and tenhang like '%" + fName + "%'";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1,catID);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            int id = rs.getInt("id");
+            String name = rs.getString("tenhang");
+            String image = rs.getString("hinhanh");
+            float price = rs.getFloat("giatien");
+            String description = rs.getString("mota");
+            int inventory = rs.getInt("trongkho");
+            String status = rs.getString("tinhtrang");
+            String category = rs.getString("loai");
+            sanPhams.add(new SanPham(id,name,price,description,image,category,inventory,status));
+        }
+        return sanPhams;
+    }
+    public List<SanPham> getSanPhamByName(String fName) throws SQLException {
+        List<SanPham> sanPhams = new ArrayList<>();
+        String query = "select product.id,product.tenhang,product.hinhanh,product.giatien,product.mota,product.trongkho,product.tinhtrang,tencategory as loai from product inner join category c on product.loai = c.id where tenhang like '%" + fName + "%'";
+        PreparedStatement statement = connection.prepareStatement(query);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            int id = rs.getInt("id");
+            String name = rs.getString("tenhang");
+            String image = rs.getString("hinhanh");
+            float price = rs.getFloat("giatien");
+            String description = rs.getString("mota");
+            int inventory = rs.getInt("trongkho");
+            String status = rs.getString("tinhtrang");
+            String category = rs.getString("loai");
+            sanPhams.add(new SanPham(id,name,price,description,image,category,inventory,status));
+        }
+        return sanPhams;
+    }
+    public SanPham getSanPhamById(int id) throws SQLException {
+        SanPham sanPhams = null;
+        String query = "select * from product where id=?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1,id);
+        ResultSet rs = statement.executeQuery();
+        while (rs.next()){
+            String name = rs.getString("tenhang");
+            String image = rs.getString("hinhanh");
+            float price = rs.getFloat("giatien");
+            String description = rs.getString("mota");
+            int inventory = rs.getInt("trongkho");
+            String status = rs.getString("tinhtrang");
+            String category = String.valueOf(rs.getInt("loai"));
+            sanPhams = new SanPham(id,name,price,description,image,category,inventory,status);
+        }
+        return sanPhams;
+    }
+    public void deletePrd(int id) throws SQLException {
+        String query = "delete from product where id=?";
+        PreparedStatement statement = connection.prepareStatement(query);
+        statement.setInt(1,id);
+        statement.executeUpdate();
+    }
 }

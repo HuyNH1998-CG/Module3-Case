@@ -36,15 +36,15 @@ Model/DonHang.java
  Model.DonHang
 Dao/ConnectionMySQL.java
  Dao.ConnectionMySQL
-Controler/ManageSanPham.java
- Controler.ManageSanPham
 controllers/LoginServlet.java
  controllers.LoginServlet
+models/Account.java
+ models.Account
 Servlet/Register.java
  Servlet.Register
 Servlet/Order.java
  Servlet.Order
 services/LoginService.java
  services.LoginService
-models/Account.java
- models.Account
+Controler/ManageSanPham.java
+ Controler.ManageSanPham

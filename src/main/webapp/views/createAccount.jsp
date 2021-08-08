@@ -18,13 +18,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-<form action="/account?action=create" method="post">
+<form action="/account?action=createmanager" method="post">
     <div class="container">
         <h2>Đăng Ký Tài Khoản</h2>
         <table class="table table-dark">
             <thead>
             <tr>
-                <th>Id</th>
                 <th>UserName</th>
                 <th>PassWord</th>
                 <th>Ten</th>

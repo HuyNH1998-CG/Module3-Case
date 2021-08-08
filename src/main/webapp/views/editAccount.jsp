@@ -38,12 +38,6 @@
             <td><input type="text" name="sdt" value="${account.soDT}"></td>
             <td><input type="text" name="email" value="${account.email}"></td>
             <td><input type="text" name="diachi" value="${account.diaChi}"></td>
-<%--            <td><input type="text" name="role" value="${account.role}"></td>--%>
-<%--            <select name="role" value="${accout.role}">--%>
-<%--                <c:forEach items="${listAcc}" var="acc">--%>
-<%--                    <option value="${acc.id}">${acc.name}</option>--%>
-<%--                </c:forEach>--%>
-<%--            </select>--%>
             <td>
                 <select type="text" name="role">
                     <option value="admin">Admin</option>

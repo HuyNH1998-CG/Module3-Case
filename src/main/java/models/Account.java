@@ -26,6 +26,17 @@ public class Account {
         this.role = role;
     }
 
+    public Account(String userName, String passWord, String ten, String ngaySinh, String sDT, String email, String diaChi, String role) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.ten = ten;
+        this.ngaySinh = ngaySinh;
+        this.soDT = soDT;
+        this.email = email;
+        this.diaChi = diaChi;
+        this.role = role;
+    }
+
     public int getId() {
         return id;
     }

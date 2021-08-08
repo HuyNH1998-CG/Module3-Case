@@ -18,6 +18,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+<a href="/account?action=createmanager" class="btn btn-danger">Tạo thêm tài khoản</a>
 <table class="table table-dark">
     <thread>
     <tr style="background-color: blue">
@@ -34,11 +35,10 @@
         <th>DELETE</th>
     </tr>
     </thread>
-    <c:forEach items="${listAcc}" var="acc" varStatus="loop">
+    <c:forEach items="${listAcc}" var="acc">
         <tr>
             <td>${acc.id}</td>
             <td>${acc.userName}</td>
-                <%--Nếu birthday viết thường là lỗi--%>
             <td>${acc.passWord}</td>
             <td>${acc.ten}</td>
             <td>${acc.ngaySinh}</td>
@@ -46,12 +46,11 @@
             <td>${acc.email}</td>
             <td>${acc.diaChi}</td>
             <td>${acc.role}</td>
-                <%--Button thì k chuyển hướng được nên phải dùng thẻ a--%>
-            <td><a href="/account?action=edit&index=${loop.index}">Edit</a></td>
-            <td><a href="/account?action=delete&id=${acc.id}">Delete</a></td>
+            <td><a href="/account?action=editmanager&id=${acc.id}"class="btn btn-danger">Edit</a></td>
+            <td><a href="/account?action=delete&id=${acc.id}"class="btn btn-danger">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
-<a href="/homepage" class="cancelbtn" style="border: #04AA6D" >Home Page</a>
+<a href="/" class="btn btn-danger" >Home Page</a>
 </body>
 </html>

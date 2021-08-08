@@ -1,6 +1,8 @@
 package Controler;
 
 import Dao.ManageMySQL;
+import Model.GioHang;
+import Model.KhachHang;
 import Model.PhanLoai;
 import Model.SanPham;
 //import Service.PhanLoaiService;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,8 +45,26 @@ public class ManageSanPham extends HttpServlet {
                 resp.sendRedirect("/views/CreateSanPham.jsp");
                 break;
             case "delete":
+                int id = Integer.parseInt(req.getParameter("id"));
+                try {
+                    manageMySQL.deletePrd(id);
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+                resp.sendRedirect("/");
+                break;
             case "edit":
-            case "FindByLoai":
+                int editid = Integer.parseInt(req.getParameter("id"));
+                SanPham edit = null;
+                try {
+                    edit = manageMySQL.getSanPhamById(editid);
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+                req.setAttribute("edit", edit);
+                requestDispatcher = req.getRequestDispatcher("/views/EditSp.jsp");
+                requestDispatcher.forward(req, resp);
+                break;
             default:
                 Default(req, resp, user);
         }
@@ -90,14 +111,54 @@ public class ManageSanPham extends HttpServlet {
                 String hinhAnh = req.getParameter("image");
                 int phanloai = Integer.parseInt(req.getParameter("category"));
                 int trongKho = Integer.parseInt(req.getParameter("amount"));
-                sanPhamService.saveSp(ten,gia,moTa,hinhAnh,phanloai,trongKho);
+                sanPhamService.saveSp(ten, gia, moTa, hinhAnh, phanloai, trongKho);
                 resp.sendRedirect("/");
                 break;
             case "edit":
+                int idEdit = Integer.parseInt(req.getParameter("id"));
+                String tenEdit = req.getParameter("ten");
+                float giaEdit = Float.parseFloat(req.getParameter("gia"));
+                String moTaEdit = req.getParameter("mota");
+                String hinhAnhEdit = req.getParameter("hinhanh");
+                int phanloaiedit = Integer.parseInt(req.getParameter("phanloai"));
+                int trongKhoedit = Integer.parseInt(req.getParameter("trongKho"));
+                try {
+                    manageMySQL.edit(idEdit, tenEdit, giaEdit, moTaEdit, hinhAnhEdit, phanloaiedit, trongKhoedit);
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+                resp.sendRedirect("/");
+                break;
+            case "FindByLoai":
+                try {
+                    searchProduct2(req, resp);
+                } catch (SQLException exception) {
+                    exception.printStackTrace();
+                }
+                break;
             default:
                 req.setAttribute("ListSp", SanPhamService.list);
                 requestDispatcher = req.getRequestDispatcher("views/HomeAdmin.jsp");
                 requestDispatcher.forward(req, resp);
         }
+    }
+
+    private void searchProduct2(HttpServletRequest request, HttpServletResponse response) throws SQLException, IOException, ServletException {
+        request.setCharacterEncoding("utf-8");
+        List<SanPham> list = new ArrayList<>();
+        int id = Integer.parseInt(request.getParameter("id"));
+        String name = request.getParameter("name");
+        if (id > 0) {
+            list = manageMySQL.getSanPhamByCatName(id, name);
+        } else {
+            list = manageMySQL.getSanPhamByName(name);
+        }
+        ArrayList<GioHang> gioHangs = (ArrayList<GioHang>) request.getSession().getAttribute("cart");
+        if (gioHangs != null) {
+            request.setAttribute("cart", gioHangs);
+        }
+        request.setAttribute("listSp", list);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/views/Home.jsp");
+        dispatcher.forward(request, response);
     }
 }

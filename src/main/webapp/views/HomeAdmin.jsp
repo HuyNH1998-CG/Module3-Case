@@ -18,10 +18,11 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<li><a href="/login?action=logout">Log out</a><li>
 <div class="container">
     <h2>Quản Lí Sản Phẩm Admin</h2>
     <a href="/?action=create" class="btn btn-danger">Thêm mới</a>
+    <a href="/account" class="btn btn-danger">Quản lý tài khoản</a>
+    <a href="/login?action=logout" class="btn btn-danger">Log out</a>
     <table class="table table-bordered">
         <thead>
         <tr>
@@ -39,19 +40,19 @@
         </thead>
 
         <tbody>
-        <form action="/"method="post">
-            <c:forEach items="${listSp}" var="sanpham" varStatus="loop">
+        <form action="/" method="post">
+            <c:forEach items="${listSp}" var="sanpham">
                 <tr>
                     <td>${sanpham.id}</td>
                     <td>${sanpham.ten}</td>
                     <td>${sanpham.gia}</td>
                     <td>${sanpham.mota}</td>
-                    <td>${sanpham.hinhanh}</td>
+                    <td><img style="width: 100px;height: 150px" src="${sanpham.hinhanh}" alt=""></td>
                     <td>${sanpham.phanloai}</td>
                     <td>${sanpham.trongKho}</td>
                     <td>${sanpham.status}</td>
-                    <td> <a href="/?action=create" class="btn btn-danger">Thêm mới</a></td>
-                    <td> <a href="/?action=edit" class="btn btn-danger">Thêm mới</a></td>
+                    <td><a href="/?action=edit&id=${sanpham.id}" class="btn btn-danger">Sửa</a></td>
+                    <td><a href="/?action=delete&id=${sanpham.id}" class="btn btn-danger">Xóa</a></td>
                 </tr>
             </c:forEach>
         </form>

@@ -28,6 +28,26 @@ public class CRUDAccount {
         return listAcc;
     }
 
+    public static Account getAccounct(int id) throws SQLException {
+        Account user = null;
+        String sqlSelect="select * from users where id=?";
+        PreparedStatement statement= connection.prepareStatement(sqlSelect);
+        statement.setInt(1,id);
+        ResultSet resultSet = statement.executeQuery();
+        while (resultSet.next()){
+            String userName= resultSet.getString("username");
+            String passWord= resultSet.getString("password");
+            String ten= resultSet.getString("ten");
+            String ngaySinh= resultSet.getString("ngaysinh");
+            String soDT= resultSet.getString("sodienthoai");
+            String email= resultSet.getString("email");
+            String diachi= resultSet.getString("diachi");
+            String role= resultSet.getString("role");
+            user =  new Account(id,userName,passWord,ten,ngaySinh,soDT,email,diachi,role);
+        }
+        return user;
+    }
+
     public static void saveAccount(Account account) throws SQLException {
         String sqlSave= "insert into users (username, password, ten, ngaysinh, sodienthoai, email, diachi) value (?,?,?,?,?,?,?,?)";
         PreparedStatement preparedStatement= connection.prepareStatement(sqlSave);
@@ -54,7 +74,7 @@ public class CRUDAccount {
         preparedStatement.setString(6,account.getEmail());
         preparedStatement.setString(7,account.getDiaChi());
         preparedStatement.setString(8,account.getRole());
-        preparedStatement.execute();
+        preparedStatement.executeUpdate();
     }
 
     public static void deleteAccount(int id) throws Exception{
