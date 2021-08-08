@@ -46,7 +46,7 @@ public class SanPhamService {
     }
 
     public static ArrayList<SanPham> FindByLoai(String loai)throws Exception{
-        return ManageMySQL.findByLoai(loai);
+        return ManageMySQL.FindByLoai( loai);
 
     }
 

@@ -170,14 +170,11 @@
     <div class="container">
         <!-- responsive-nav -->
         <div id="responsive-nav">
-            <!-- NAV -->
+            <!-- NAV --------------------------------------------------------------------------------------------->
             <ul class="main-nav nav navbar-nav">
-                <li class="active"><a href="/Views/Home.jsp">Home</a></li>
-                <li><a href="/Show/DoGiaDung.jsp">Đồ Gia Dụng</a></li>
-                <li><a href="/Show/DoDt.jsp">Đồ Điện Tử</a></li>
-                <li><a href="/Show/Sach.jsp">Sách</a></li>
-                <li><a href="/Show/Quanao.jsp">Quần Áo</a></li>
-                <li><a href="/Show/Khac.jsp">Khác</a></li>
+                <c:forEach items="${ListPl}" var="pl">
+                    <li><a href="/Category">${a.tenLoai}</a></li>
+                </c:forEach>
             </ul>
             <!-- /NAV -->
         </div>
@@ -345,9 +342,9 @@
                 <!-- store top filter -->
                 <div class="store-filter clearfix">
                     <div class="store-sort">
-                        <label><a href="CreateSanPham.jsp" class="btn btn-outline-success">Thêm Sản Phẩm</button>
-                            <a href="DeleteSP.jsp" class="btn btn-outline-success">Xóa Sản Phẩm</button>
-                            <a href="EditSp.jsp" class="btn btn-outline-success">Edit Sản Phẩm</button>
+                        <label><a href="CreateSanPham.jsp" class="btn btn-outline-success">Thêm Sản Phẩm</a>
+                            <a href="DeleteSP.jsp" class="btn btn-outline-success">Xóa Sản Phẩm</a>
+                            <a href="EditSp.jsp" class="btn btn-outline-success">Edit Sản Phẩm</a>
                         </label>
 
                     </div>
@@ -378,7 +375,7 @@
                                     </div>
                                     <div class="product-btns">
                                         <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Thêm vào Yêu Thích</span></button>
-                                        <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Xem</span></button>
+                                        <a href="/?action=Show&id=${SP.id}"> <i class="fa fa-eye"></i><span class="tooltipp">Xem</span></a>
                                     </div>
                                 </div>
                             </div>

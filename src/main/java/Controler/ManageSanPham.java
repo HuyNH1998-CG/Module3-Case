@@ -4,6 +4,7 @@ import Dao.ManageMySQL;
 import Model.PhanLoai;
 import Model.SanPham;
 //import Service.PhanLoaiService;
+import Service.PhanLoaiService;
 import Service.SanPhamService;
 
 import javax.servlet.RequestDispatcher;
@@ -21,6 +22,7 @@ import java.util.List;
 public class ManageSanPham extends HttpServlet {
     ManageMySQL manageMySQL = new ManageMySQL();
     SanPhamService sanPhamService = new SanPhamService();
+    PhanLoaiService phanLoaiService =new PhanLoaiService();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -57,9 +59,22 @@ public class ManageSanPham extends HttpServlet {
                 requestDispatcher = req.getRequestDispatcher("Views/HomeAdmin.jsp");
                 requestDispatcher.forward(req, resp);
                 break;
+            case "Show":
+                int cateID=Integer.parseInt(req.getParameter("id"));
+                ManageMySQL manageMySQL = new ManageMySQL();
+                try {
+                    SanPham Sp=manageMySQL.ShowSp(cateID);
+                    req.setAttribute("Sp",Sp);
+                    requestDispatcher = req.getRequestDispatcher("Views/ShowSp.jsp");
+                    requestDispatcher.forward(req, resp);
+
+                } catch (SQLException throwables) {
+                    throwables.printStackTrace();
+                }
+                break;
             default:
                 req.setAttribute("listSp", SanPhamService.list);
-                requestDispatcher = req.getRequestDispatcher("Views/HomeAdmin.jsp");
+                requestDispatcher = req.getRequestDispatcher("Views/Home.jsp");
                 requestDispatcher.forward(req, resp);
         }
 
@@ -117,9 +132,9 @@ public class ManageSanPham extends HttpServlet {
                 break;
 
             default:
-//                req.setAttribute("ListPl", PhanLoaiService.listpl);
+                req.setAttribute("ListPl", PhanLoaiService.listpl);
                 req.setAttribute("ListSp", SanPhamService.list);
-                requestDispatcher = req.getRequestDispatcher("Views/HomeAdmin.jsp");
+                requestDispatcher = req.getRequestDispatcher("Views/Home.jsp");
                 requestDispatcher.forward(req, resp);
         }
     }

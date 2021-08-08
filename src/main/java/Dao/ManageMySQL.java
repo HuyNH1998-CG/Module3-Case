@@ -34,6 +34,21 @@ public class ManageMySQL {
         return list;
     }
 
+    public static List<PhanLoai> SelectID() throws Exception {
+        String Select = "SELECT * FROM category";
+        ArrayList<PhanLoai> list = new ArrayList<>();
+        PreparedStatement preparedStatement=connection.prepareStatement(Select);
+        ResultSet resultSet = preparedStatement.executeQuery();
+
+
+        while (resultSet.next()) {
+            int id = resultSet.getInt(1);
+            String ten=resultSet.getString(2);
+            list.add(new PhanLoai(id,ten));
+        }
+        return list;
+    }
+
 
     public static void create(SanPham sanPham)throws SQLException{
         String create= "insert into product value(?,?,?,?,?,?,?,?)";
@@ -69,10 +84,12 @@ public class ManageMySQL {
         preparedStatement.setInt(1,id);
         preparedStatement.execute();
     }
-    public static ArrayList<SanPham> findByLoai(String loaiSp)throws SQLException{
-        ArrayList<SanPham>findlist=new ArrayList<>();
-        String delete= "select * from product where loai like'%"+loaiSp+"%'";
-        PreparedStatement preparedStatement=connection.prepareStatement(delete);
+    public static SanPham ShowSp(int Id)throws SQLException{
+       SanPham sanPham1 = new SanPham();
+        String ShowSp1= "select * from product where idSp=?";
+
+        PreparedStatement preparedStatement=connection.prepareStatement(ShowSp1);
+        preparedStatement.setInt(1,Id);
         ResultSet resultSet=preparedStatement.executeQuery();
 
         while (resultSet.next()){
@@ -85,10 +102,34 @@ public class ManageMySQL {
             String trongKho=resultSet.getString(7);
             String status=resultSet.getString(8);
 
-            findlist.add(new SanPham(id,ten,gia,mota,hinhanh,phanloai,trongKho,status));
+            return (new SanPham(id,ten,gia,mota,hinhanh,phanloai,trongKho,status));
 
         }
-        return findlist;
+return  sanPham1;
     }
+    public static ArrayList<SanPham> FindByLoai(String LoaiSp1)throws SQLException{
+        ArrayList<SanPham> listLoai = new ArrayList<>();
+        String LoaiSp= "select * from product where loai=?";
+        PreparedStatement preparedStatement=connection.prepareStatement(LoaiSp);
+        ResultSet resultSet=preparedStatement.executeQuery();
+        preparedStatement.setString(1,LoaiSp1);
+
+        while (resultSet.next()){
+            int id = resultSet.getInt(1);
+            String ten=resultSet.getString(2);
+            float gia=Float.parseFloat(resultSet.getString(3));
+            String mota=resultSet.getString(5);
+            String hinhanh=resultSet.getString(4);
+            String phanloai=resultSet.getString(6);
+            String trongKho=resultSet.getString(7);
+            String status=resultSet.getString(8);
+
+            listLoai.add (new SanPham(id,ten,gia,mota,hinhanh,phanloai,trongKho,status));
+
+        }
+        return listLoai;
+
+    }
+
 
 }

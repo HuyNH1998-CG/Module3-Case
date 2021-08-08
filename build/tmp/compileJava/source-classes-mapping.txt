@@ -2,12 +2,16 @@ Model/PhanLoai.java
  Model.PhanLoai
 Model/KhachHang.java
  Model.KhachHang
+Controler/CategoryServlet.java
+ Controler.CategoryServlet
 Dao/ConnectionMySQL.java
  Dao.ConnectionMySQL
 Model/DonHang.java
  Model.DonHang
 Model/SanPham.java
  Model.SanPham
+Service/PhanLoaiService.java
+ Service.PhanLoaiService
 Service/SanPhamService.java
  Service.SanPhamService
 Controler/ManageSanPham.java
